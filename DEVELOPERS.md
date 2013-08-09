@@ -89,7 +89,7 @@ Cinch plugins. There are just a couple of extra steps:
    modify the bot's executable file.
 
 Here's the bare minimum plugin definition:
-
+```ruby
     module JustBot
         module Plugins
             # Cool new plugin
@@ -104,5 +104,5 @@ Here's the bare minimum plugin definition:
             All << MyNewPlugin
         end
     end
-
+```
 
