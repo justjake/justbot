@@ -1,13 +1,13 @@
 # "JustBot" IRC Bot
 
-by Jake Teton-Landis <just.1.jake@gmail.com>
-copyright 2012, all rights reserved
+    by Jake Teton-Landis <just.1.jake@gmail.com>
+    copyright 2012, all rights reserved
 
 ## About
 
-*Online documentation*: http://rubydoc.info/github/justjake/justbot
-
-You can discover the plugins availible in Justbot by looking at {Justbot::Plugins}
+JustBot is an IRC bot based on
+[Cinch](https://github.com/cinchrb/cinch/), a threaded IRC bot
+framework. You can discover the different features availible to Justbot users looking at {Justbot::Plugins}
 
 Here are a few of the better features:
 
@@ -15,13 +15,75 @@ Here are a few of the better features:
 *   follow all your Rescomp freinds at once by typing `JustBot: twitter followall`
 *   bask in the warm glow of the social as JustBot prints tweets to ## in 3-color glory!
 
-This bot is build on the Cinch framework, a ruby library for building
-IRC bots which features a nicely threaded design. It allows you to build
-bot capabilities through plugins, so you can easily separate bot functionality.
-
 There are a few components that are not Cinch-dependent, such as the DataMapper users
 support, but they are ment to be used from Cinch plugins.
 
+## Development Guide
+
+Justbot has three major components:
+
+1. It is a collection of Chinch plugins. These you could consider
+   ViewControllers if you want to look at this as an MVC-style project.
+   A plugin defines a set of responses to IRC events.
+
+2. It provides a friendly help system for plugin authors, allowing you
+   to easily document your Cinch matches so your users can query the IRC
+   bot for usage information. See {Justbot::Helpful} for useful IRC help
+   tools.
+
+3. It manages user authentication and authorization for plugins, with a
+   DataMapper ORM backend, so it can run atop any of the databases
+   DataMapper supports.
+
+Read the [Cinch getting started documentation][cgs] to get a feel for how
+Justbot's IRC system works.
+
+### Creating a plugin
+
+Creating a JustBot plugin is almost identical to the system for creating
+Cinch plugins. There are just a couple of extra steps:
+
+1. All plugins go in {JustBot::Plugins}, as files inside of
+   `lib/plugins`. 
+
+2. Plugins include both Cinch::Plugin (this gives you all the
+   handy-dandy Cinch plugin definition methods) AND {Justbot::Helpful},
+   which adds support for the JustBot help system.
+
+3. You should add your plugin to the list of all plugins,
+   {Justbot::Plugins::All} at the end of your class definition.
+   This allows bots to include all plugins at once without having to
+   modify the bot's executable file.
+
+Here's the bare minimum plugin definition:
+
+    module JustBot
+        module Plugins
+            # Cool new plugin
+            class MyNewPlugin
+                include Cinch::Plugin
+                include Justbot::Helpful
+                
+                # ... cinch plugin definition ...
+            end
+
+            # add my plugin to the list of all plugins
+            All << MyNewPlugin
+        end
+    end
+
+
+*Online documentation*:
+http://rubydoc.info/github/justjake/justbot/frames
+
+*Documentation for [Cinch][c]*:
+
+* Main docs: http://rubydoc.info/gems/cinch/frames
+* Directives availiable to create plugins:
+  http://rubydoc.info/gems/cinch/Cinch/Plugin/ClassMethods
+* Getting Started: [here][cgs]
+
+[cgs]: http://rubydoc.info/github/cinchrb/cinch/file/docs/getting_started.md
 
 ## Requirements
 
@@ -53,13 +115,17 @@ In order of importance:
 *   **This documentation** is generated using [YARD](http://yardoc.org/) but really if you like Ruby
     (or even use it at all) you should have `yard server --gems` running somewhere.
 
+## To Run
 
-## Bot Usage from IRC
+    $ cd /path/to/bot/
+    $ ruby bin/justbot
+
+## Help for IRC Users
 
 `/msg <botname> help` will give you an overview of the active plugins in a bot
 instance:
 
-     > help
+    > help
     Help for JustBot
     plugins:
     Administration, Friendly, Help, Registration, Sessions, Tweet, TwitterFeed, Steam
@@ -83,7 +149,7 @@ but to actually request the command, you would type
     or
     > /msg JustBot twitter follow @justbotirc
 
-## Developments
+## Project
 
 ### Source Code Access
 
@@ -136,8 +202,3 @@ Mockup:
 
 When ties occur in voting, SaltyBot will bet less money, and bet on the
 better of the two contendors.
-
-## To Run
-
-    $ cd /path/to/bot/
-    $ ruby bin/justbot
