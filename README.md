@@ -1,89 +1,25 @@
-# "JustBot" IRC Bot
+# Justbot: a helpful IRC bot with user authentication and authorization
 
-    by Jake Teton-Landis <just.1.jake@gmail.com>
-    copyright 2012, all rights reserved
+    Jake Teton-Landis <just.1.jake@gmail.com>
+    copyright 2012, 2013. all rights reserved
+
+*see {file:DEVELOPERS.md} for information about hacking on Justbot*
 
 ## About
 
-JustBot is an IRC bot based on
+Justbot is an IRC bot based on
 [Cinch](https://github.com/cinchrb/cinch/), a threaded IRC bot
 framework. You can discover the different features availible to Justbot users looking at {Justbot::Plugins}
 
-Here are a few of the better features:
+Here are a few of the better features, back in 2012 before Twitter did
+some API stuff:
 
 *   tweet right from irc by typing `!tweet <update text>`
-*   follow all your Rescomp freinds at once by typing `JustBot: twitter followall`
-*   bask in the warm glow of the social as JustBot prints tweets to ## in 3-color glory!
+*   follow all your Rescomp freinds at once by typing `Justbot: twitter followall`
+*   bask in the warm glow of the social as Justbot prints tweets to ## in 3-color glory!
 
-There are a few components that are not Cinch-dependent, such as the DataMapper users
-support, but they are ment to be used from Cinch plugins.
+There are a few components that are not Cinch-dependent, such as the DataMapper users support, but they are ment to be used from Cinch plugins.
 
-## Development Guide
-
-Justbot has three major components:
-
-1. It is a collection of Chinch plugins. These you could consider
-   ViewControllers if you want to look at this as an MVC-style project.
-   A plugin defines a set of responses to IRC events.
-
-2. It provides a friendly help system for plugin authors, allowing you
-   to easily document your Cinch matches so your users can query the IRC
-   bot for usage information. See {Justbot::Helpful} for useful IRC help
-   tools.
-
-3. It manages user authentication and authorization for plugins, with a
-   DataMapper ORM backend, so it can run atop any of the databases
-   DataMapper supports.
-
-Read the [Cinch getting started documentation][cgs] to get a feel for how
-Justbot's IRC system works.
-
-### Creating a plugin
-
-Creating a JustBot plugin is almost identical to the system for creating
-Cinch plugins. There are just a couple of extra steps:
-
-1. All plugins go in {JustBot::Plugins}, as files inside of
-   `lib/plugins`. 
-
-2. Plugins include both Cinch::Plugin (this gives you all the
-   handy-dandy Cinch plugin definition methods) AND {Justbot::Helpful},
-   which adds support for the JustBot help system.
-
-3. You should add your plugin to the list of all plugins,
-   {Justbot::Plugins::All} at the end of your class definition.
-   This allows bots to include all plugins at once without having to
-   modify the bot's executable file.
-
-Here's the bare minimum plugin definition:
-
-    module JustBot
-        module Plugins
-            # Cool new plugin
-            class MyNewPlugin
-                include Cinch::Plugin
-                include Justbot::Helpful
-                
-                # ... cinch plugin definition ...
-            end
-
-            # add my plugin to the list of all plugins
-            All << MyNewPlugin
-        end
-    end
-
-
-*Online documentation*:
-http://rubydoc.info/github/justjake/justbot/frames
-
-*Documentation for [Cinch][c]*:
-
-* Main docs: http://rubydoc.info/gems/cinch/frames
-* Directives availiable to create plugins:
-  http://rubydoc.info/gems/cinch/Cinch/Plugin/ClassMethods
-* Getting Started: [here][cgs]
-
-[cgs]: http://rubydoc.info/github/cinchrb/cinch/file/docs/getting_started.md
 
 ## Requirements
 
@@ -126,7 +62,7 @@ In order of importance:
 instance:
 
     > help
-    Help for JustBot
+    Help for Justbot
     plugins:
     Administration, Friendly, Help, Registration, Sessions, Tweet, TwitterFeed, Steam
     help in Help
@@ -139,15 +75,15 @@ so '`help admin`' will show the help for the `Adimistration` plugin.
 The confusing thing is, commands are not called prefixed by module name. For example, if you wanted
 to get help about command `twitter follow` in module `TwitterFeed` you might type the following:
 
-    > JustBot: help twit twitter follow
+    > Justbot: help twit twitter follow
     or
-    > /msg JustBot help twit twitter follow
+    > /msg Justbot help twit twitter follow
 
 but to actually request the command, you would type
 
-    > JustBot: twitter follow @justbotirc
+    > Justbot: twitter follow @justbotirc
     or
-    > /msg JustBot twitter follow @justbotirc
+    > /msg Justbot twitter follow @justbotirc
 
 ## Project
 
@@ -158,18 +94,24 @@ read config from environemnt variables, but for now the config file for
 twitter stuff, `config/twitter.yaml` just has my personal Oauth keys
 missing.
 
-Visit JustBot online at https://github.com/justjake/justbot
+Visit Justbot online at https://github.com/justjake/justbot
 
 ### TODOs
+
+I need to get these things done for Justbot to be usable.
 
 1. Refactor user registration so that it does not depend on Twitter
    oauth. A user should be able to register without twitter
 
 2. Refactor the `User` model so that Twitter accounts are seperate
-   from JustBot users. Add `TwitterAccount` model with 1:1 link to
+   from Justbot users. Add `TwitterAccount` model with 1:1 link to
    `User`.
 
-3. Set up documentation auto-publishing.
+3. Update Twitter-related modules to coordinate thier Oauth token
+   retrieval efforts to load tokesn from environment variables.
+   Twitter plugins should automatically de-activate themselves if these
+   environment variables are undefined.
+
 
 ### Project Idea: SaltyBot
 
