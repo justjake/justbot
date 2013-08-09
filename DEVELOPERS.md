@@ -90,19 +90,21 @@ Cinch plugins. There are just a couple of extra steps:
 
 Here's the bare minimum plugin definition:
 ```ruby
-    module JustBot
-        module Plugins
-            # Cool new plugin
-            class MyNewPlugin
-                include Cinch::Plugin
-                include Justbot::Helpful
+module JustBot
+  module Plugins
+  
+    # Cool new plugin
+    class MyNewPlugin
+      include Cinch::Plugin
+      include Justbot::Helpful
                 
-                # ... cinch plugin definition ...
-            end
-
-            # add my plugin to the list of all plugins
-            All << MyNewPlugin
-        end
+      # ... cinch plugin definition ...
     end
+
+    # add my plugin to the list of all plugins
+    All << MyNewPlugin
+    
+  end
+end
 ```
 
