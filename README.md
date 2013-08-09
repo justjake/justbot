@@ -27,7 +27,7 @@ support, but they are ment to be used from Cinch plugins.
 
 In order of importance:
 
-1.  Ruby 1.9.1 or better.
+1.  Ruby 1.9.1 or better. Tested to work with 2.0.0-p247 as well.
 2.  [Cinch][1] framework (`gem install cinch`) is the core library for the bot.
 3.   Two (!) gems are used for interfacing with the Twitter APIs:
     1.  **`twitter`** is used for most Twitter API interaction
@@ -83,17 +83,59 @@ but to actually request the command, you would type
 
 ## Developments
 
-### [Issue Tracker](https://bitbucket.org/justjake/justbot/issues)
-
 ### Source Code Access
 
-The bot is closed source for now, because there are secrets in the source
-codes. If you pester me enough I'll create a new repo where there's no history,
-and also no secrets in the past. But for now this is a side-side-project and has
-like zero real brain power in it.
+Justbot is now open-source! I still need to move the Twitter modules to
+read config from environemnt variables, but for now the config file for
+twitter stuff, `config/twitter.yaml` just has my personal Oauth keys
+missing.
+
+Visit JustBot online at https://github.com/justjake/justbot
+
+### TODOs
+
+1. Refactor user registration so that it does not depend on Twitter
+   oauth. A user should be able to register without twitter
+
+2. Refactor the `User` model so that Twitter accounts are seperate
+   from JustBot users. Add `TwitterAccount` model with 1:1 link to
+   `User`.
+
+3. Set up documentation auto-publishing.
+
+### Project Idea: SaltyBot
+
+Provide an IRC interface to SaltyBet. The bot will manage a shared
+SaltyBet user account with Illuminati privelages. It should post the
+names and rankings of contenders each time a new match occurs.
+
+Users in the channel vote on which contender SaltyBot should place its
+bet on.
+
+Mockup:
+
+    SaltyBot> Round 9245                                     $4570 SaltyBucks 
+    SaltyBot> ================================VS=============================
+    SaltyBot> Vegeta SSJ4                                          Jonny Cage
+    SaltyBot> 12/0/2 - 85.71% win, 70% conf         6/2/0 - 75% win, 50% conf
+    ...
+    jitl>  SaltyBot: bet vegeta
+    gchao> SaltyBot: bet jonny
+    ...
+    SaltyBot> Voting results: 1 for "Vegeta SSJ4", 1 for "Jonny Cage"
+    SaltyBot> Betting $100 on "Vegeta SSJ4" (better win ratio in tie)
+    ...
+    SaltyBot> TO THE SALT MINES WITH YOU: sanic4lyfe ($50), bobparr
+              ($9001), margretThatcher ($299), IvanTheTerrible ($400)
+    ...
+    SaltyBot> Round 9245 over: Jonny Cage wins!
+    SaltyBot> jitl: Apply yourself. This is your fourth bad call today.
+    SaltyBot> gchao: Don't get cocky, kid.
+
+When ties occur in voting, SaltyBot will bet less money, and bet on the
+better of the two contendors.
 
 ## To Run
 
     $ cd /path/to/bot/
-    $ ruby -v # should be >= 1.9.1
     $ ruby bin/justbot
