@@ -1,0 +1,5 @@
+--exclude doc
+lib
+README.md
+DEVELOPERS.md
+bin/justbot

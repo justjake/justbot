@@ -6,13 +6,13 @@
 <title>
   Class: Justbot::Plugins::SessionManager
   
-    &mdash; Documentation by YARD 0.8.2.1
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -122,27 +122,27 @@
         <dt id="INVALID_USER_OR_PASSWORD-constant" class="">INVALID_USER_OR_PASSWORD =
           
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>unknown user or invalid password</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>unknown user or invalid password</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="INVALID_CONFIRM-constant" class="">INVALID_CONFIRM =
           
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>confirmation incorrect or not required</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>confirmation incorrect or not required</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="NO_SESSION-constant" class="">NO_SESSION =
           
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>you cannot do this because you have no session</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>you cannot do this because you have no session</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="SESSION_AUTHED-constant" class="">SESSION_AUTHED =
           
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>session already authenticated</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>session already authenticated</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="SUCCESS-constant" class="">SUCCESS =
           
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>session created and authenticated!</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>session created and authenticated!</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
     </dl>
   
@@ -301,7 +301,7 @@ username with password.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>destroys the sending user's session.</p>
+<p>destroys the sending user&#39;s session.</p>
 </div></span>
   
 </li>
@@ -544,7 +544,7 @@ username with password</p>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_authenticates?'>authenticates?</span> <span class='id identifier rubyid_password'>password</span>
     <span class='id identifier rubyid_secret'>secret</span> <span class='op'>=</span> <span class='const'>Justbot</span><span class='op'>::</span><span class='const'>Session</span><span class='period'>.</span><span class='id identifier rubyid_random_secret'>random_secret</span>
-    <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Two-factor secret: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_secret'>secret</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Two-factor secret: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_secret'>secret</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Justbot</span><span class='op'>::</span><span class='const'>Session</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_mask'>mask</span><span class='comma'>,</span> <span class='id identifier rubyid_secret'>secret</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_synchronize'>synchronize</span><span class='lparen'>(</span><span class='symbol'>:session</span><span class='rparen'>)</span> <span class='kw'>do</span>
       <span class='comment'># decrypt
@@ -613,16 +613,16 @@ username with password</p>
       <pre class="code"><span class="info file"># File 'lib/plugins/session_manager.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_listen'>listen</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_oldmask'>oldmask</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_mask'>mask</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>!</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_oldmask'>oldmask</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_mask'>mask</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>!</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_oldmask'>oldmask</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_last_nick'>last_nick</span>
-  <span class='id identifier rubyid_oldmask'>oldmask</span> <span class='op'>=</span> <span class='id identifier rubyid_oldmask'>oldmask</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>!</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_oldmask'>oldmask</span> <span class='op'>=</span> <span class='id identifier rubyid_oldmask'>oldmask</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>!</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Justbot</span><span class='op'>::</span><span class='const'>Session</span><span class='period'>.</span><span class='id identifier rubyid_for'>for</span><span class='lparen'>(</span><span class='id identifier rubyid_oldmask'>oldmask</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span>
     <span class='id identifier rubyid_synchronize'>synchronize</span><span class='lparen'>(</span><span class='symbol'>:session</span><span class='rparen'>)</span> <span class='kw'>do</span>
       <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_mask'>mask</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_mask'>mask</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no session found for mask '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_oldmask'>oldmask</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no session found for mask &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_oldmask'>oldmask</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -677,14 +677,14 @@ username with password</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_session_info'>session_info</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Justbot</span><span class='op'>::</span><span class='const'>Session</span><span class='period'>.</span><span class='id identifier rubyid_for'>for</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You don't currently have a session.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You don&#39;t currently have a session.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>return</span>
   <span class='kw'>else</span>
     <span class='const'>Justbot</span><span class='op'>::</span><span class='id identifier rubyid_reply_in_pm'>reply_in_pm</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
       <span class='id identifier rubyid_r'>r</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You have a session!</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_r'>r</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  mask:      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_mask'>mask</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_r'>r</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  expires:   </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_expiration'>expiration</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='id identifier rubyid_r'>r</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  is authed: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_authed?'>authed?</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_r'>r</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  mask:      </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_mask'>mask</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_r'>r</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  expires:   </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_expiration'>expiration</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_r'>r</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  is authed: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_authed?'>authed?</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -705,7 +705,7 @@ username with password</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>destroys the sending user's session</p>
+<p>destroys the sending user&#39;s session</p>
 
 
   </div>
@@ -736,7 +736,7 @@ username with password</p>
   <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Session</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span>
     <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_end!'>end!</span>
-    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>session terminated.</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>session terminated.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='const'>NO_SESSION</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -751,9 +751,9 @@ username with password</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jun 28 16:27:10 2012 by
+  Generated on Thu Aug  8 19:22:59 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.8.7 (ruby-2.0.0).
 </div>
 
   </body>

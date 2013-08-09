@@ -6,13 +6,13 @@
 <title>
   Class: Justbot::Plugins::Admin
   
-    &mdash; Documentation by YARD 0.8.2.1
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -106,7 +106,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Controls access to bot "administration" functions</p>
+<p>Controls access to bot “administration” functions</p>
 
 
   </div>
@@ -337,7 +337,9 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Send message to all channels the bot is in @example:.</p>
+<p>Send message to all channels the bot is in @example:   JustBot: tellall
+I&#39;m shutting down for new features!   In each channel:     JustBot&gt;
+I&#39;m shutting down for new features!.</p>
 </div></span>
   
 </li>
@@ -387,7 +389,7 @@
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: admin add tyrus DERP</pre>
+      <pre class="example code"><code>JustBot: admin add tyrus DERP</code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -462,7 +464,7 @@
       <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_is_admin'>is_admin</span> <span class='op'>=</span> <span class='kw'>true</span>
       <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User '%s' not found</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='const'>Format</span><span class='lparen'>(</span><span class='symbol'>:bold</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User &#39;%s&#39; not found</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='const'>Format</span><span class='lparen'>(</span><span class='symbol'>:bold</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_no_permission'>no_permission</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
@@ -496,7 +498,7 @@
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: admin list</pre>
+      <pre class="example code"><code>JustBot: admin list</code></pre>
     
   </div>
 
@@ -518,8 +520,8 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_admin_list'>admin_list</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_admins'>admins</span> <span class='op'>=</span> <span class='const'>Justbot</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span><span class='symbol'>:is_admin</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_admins'>admins</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_u'>u</span><span class='op'>|</span> <span class='id identifier rubyid_u'>u</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>The admins are: </span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='id identifier rubyid_admins'>admins</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_admins'>admins</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_u'>u</span><span class='op'>|</span> <span class='id identifier rubyid_u'>u</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>The admins are: </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_admins'>admins</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -549,7 +551,7 @@
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: admin remove anneliu</pre>
+      <pre class="example code"><code>JustBot: admin remove anneliu</code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -619,7 +621,7 @@
       <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_is_admin'>is_admin</span> <span class='op'>=</span> <span class='kw'>false</span>
       <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User '%s' not found</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='const'>Format</span><span class='lparen'>(</span><span class='symbol'>:bold</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User &#39;%s&#39; not found</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='lbracket'>[</span><span class='const'>Format</span><span class='lparen'>(</span><span class='symbol'>:bold</span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_no_permission'>no_permission</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
@@ -653,7 +655,7 @@
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: channel join #justjake</pre>
+      <pre class="example code"><code>JustBot: channel join #justjake</code></pre>
     
   </div>
 
@@ -702,7 +704,7 @@
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: channel leave #general</pre>
+      <pre class="example code"><code>JustBot: channel leave #general</code></pre>
     
   </div>
 
@@ -721,7 +723,7 @@
       <pre class="code"><span class="info file"># File 'lib/plugins/admin.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_channel_leave'>channel_leave</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_channel'>channel</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_if_admin'>if_admin</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='ivar'>@bot</span><span class='period'>.</span><span class='id identifier rubyid_part'>part</span><span class='lparen'>(</span><span class='id identifier rubyid_channel'>channel</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='rbrace'>}</span><span class='tstring_content'> requested I leave</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_if_admin'>if_admin</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='ivar'>@bot</span><span class='period'>.</span><span class='id identifier rubyid_part'>part</span><span class='lparen'>(</span><span class='id identifier rubyid_channel'>channel</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='embexpr_end'>}</span><span class='tstring_content'> requested I leave</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -762,7 +764,7 @@
       <pre class="code"><span class="info file"># File 'lib/plugins/admin.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_no_permission'>no_permission</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You don't have permission to do that, bro.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You don&#39;t have permission to do that, bro.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -792,8 +794,8 @@
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><span class='tstring'><span class='regexp_beg'>/</span><span class='regexp_end'>join ##
-</span></span></pre>
+      <pre class="example code"><code><span class='tstring'><span class='regexp_beg'>/</span><span class='regexp_end'>join ##
+</span></span></code></pre>
     
   </div>
 
@@ -867,9 +869,9 @@
     
 <p>Send message to all channels the bot is in @example:</p>
 
-<pre class="code ruby"><code>JustBot: tellall I'm shutting down for new features!
+<pre class="code ruby"><code class="ruby">JustBot: tellall I&#39;m shutting down for new features!
 In each channel:
-  JustBot&gt; I'm shutting down for new features!</code></pre>
+  JustBot&gt; I&#39;m shutting down for new features!</code></pre>
 
 
   </div>
@@ -907,9 +909,9 @@ In each channel:
 </div>
 
     <div id="footer">
-  Generated on Thu Jun 28 16:27:09 2012 by
+  Generated on Thu Aug  8 19:22:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.8.7 (ruby-2.0.0).
 </div>
 
   </body>

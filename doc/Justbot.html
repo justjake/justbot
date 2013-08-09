@@ -6,13 +6,13 @@
 <title>
   Module: Justbot
   
-    &mdash; Documentation by YARD 0.8.2.1
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -80,7 +80,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/base.rb<span class="defines">,<br />
-  lib/user.rb,<br /> lib/crypto.rb,<br /> lib/helpful.rb,<br /> lib/session.rb,<br /> lib/database.rb,<br /> lib/plugins/help.rb,<br /> lib/plugins/admin.rb,<br /> lib/plugins/tweet.rb,<br /> lib/plugins/steam.rb,<br /> lib/plugins/friendly.rb,<br /> lib/plugins/tumblrguard.rb,<br /> lib/plugins/twitter_watcher.rb,<br /> lib/plugins/session_manager.rb,<br /> lib/plugins/registration_manager.rb</span>
+  lib/user.rb,<br /> lib/crypto.rb,<br /> lib/session.rb,<br /> lib/helpful.rb,<br /> lib/database.rb,<br /> lib/plugins/help.rb,<br /> lib/plugins/steam.rb,<br /> lib/plugins/tweet.rb,<br /> lib/plugins/admin.rb,<br /> lib/plugins/friendly.rb,<br /> lib/plugins/tumblrguard.rb,<br /> lib/plugins/session_manager.rb,<br /> lib/plugins/twitter_watcher.rb,<br /> lib/plugins/registration_manager.rb</span>
 </dd>
   
 </dl>
@@ -129,14 +129,14 @@ user/admin/auth stack based on DataMapper</p>
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='kw'>__FILE__</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>config</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='kw'>__FILE__</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>config</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></pre></dd>
       
         <dt id="Prefix-constant" class="">Prefix =
           <div class="docstring">
   <div class="discussion">
     
-<p>bot responds to '&lt;Bot Name&gt;: ', in channels, or commands at the start
-of the line, in PMs</p>
+<p>bot responds to &#39;&lt;Bot Name&gt;: &#39;, in channels, or commands at
+the start of the line, in PMs</p>
 
 <p>determines what the bot responds to. IRC bot commands must be prefixed by
 whatever Regex this returns</p>
@@ -189,7 +189,7 @@ whatever Regex this returns</p>
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>CONFIG_ROOT</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>database.sqlite</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>CONFIG_ROOT</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>database.sqlite</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></pre></dd>
       
     </dl>
   
@@ -211,7 +211,7 @@ whatever Regex this returns</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#notify_private_reply-class_method" title="notify_private_reply (class method)">+ (Object) <strong>notify_private_reply</strong>(m, message_type = 'your interaction') </a>
+      <a href="#notify_private_reply-class_method" title="notify_private_reply (class method)">+ (Object) <strong>notify_private_reply</strong>(m, message_type = &#39;your interaction&#39;) </a>
     
 
     
@@ -269,7 +269,7 @@ user is not PMing the bot.</p>
       <div class="method_details first">
   <h3 class="signature first" id="notify_private_reply-class_method">
   
-    + (<tt>Object</tt>) <strong>notify_private_reply</strong>(m, message_type = 'your interaction') 
+    + (<tt>Object</tt>) <strong>notify_private_reply</strong>(m, message_type = &#39;your interaction&#39;) 
   
 
   
@@ -312,12 +312,12 @@ user is not PMing the bot</p>
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>'your interaction'</tt>)</em>
+        <em class="default">(defaults to: <tt>&#39;your interaction&#39;</tt>)</em>
       
       
         &mdash;
         <div class='inline'>
-<p>"message_type continues via PM", default 'your interaction'</p>
+<p>“message_type continues via PM”, default &#39;your interaction&#39;</p>
 </div>
       
     </li>
@@ -340,9 +340,9 @@ user is not PMing the bot</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/base.rb', line 38</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_notify_private_reply'>notify_private_reply</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_message_type'>message_type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>your interaction</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_notify_private_reply'>notify_private_reply</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_message_type'>message_type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>your interaction</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_channel?'>channel?</span>
-    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='id identifier rubyid_message_type'>message_type</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> continues via PM</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='id identifier rubyid_message_type'>message_type</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> continues via PM</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -496,9 +496,9 @@ user is not PMing the bot</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jun 28 16:27:09 2012 by
+  Generated on Thu Aug  8 19:22:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.8.7 (ruby-2.0.0).
 </div>
 
   </body>

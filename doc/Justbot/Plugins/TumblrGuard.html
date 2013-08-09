@@ -6,13 +6,13 @@
 <title>
   Class: Justbot::Plugins::TumblrGuard
   
-    &mdash; Documentation by YARD 0.8.2.1
+    &mdash; Documentation by YARD 0.8.7
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -289,7 +289,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#kick_mode-instance_method" title="#kick_mode (instance method)">- (Object) <strong>kick_mode</strong>(m, setting = 'status') </a>
+      <a href="#kick_mode-instance_method" title="#kick_mode (instance method)">- (Object) <strong>kick_mode</strong>(m, setting = &#39;status&#39;) </a>
     
 
     
@@ -304,7 +304,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Set or query whether we're kicking people.</p>
+<p>Set or query whether we&#39;re kicking people.</p>
 </div></span>
   
 </li>
@@ -389,7 +389,7 @@ first time kicks them the second time ignores admin users.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>A new instance of TumblrGuard</p>
+<p>Returns a new instance of TumblrGuard</p>
 
 
   </div>
@@ -518,7 +518,7 @@ Regex and then passed to the corrosponding Ruby method</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: mentioned [nickname]</pre>
+      <pre class="example code"><code>JustBot: mentioned [nickname]</code></pre>
     
   </div>
 
@@ -544,10 +544,10 @@ Regex and then passed to the corrosponding Ruby method</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_mentioned'>has_mentioned</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_nick'>nick</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@warnings</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_nick'>nick</span>
-    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_nick'>nick</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@warnings</span><span class='lbracket'>[</span><span class='id identifier rubyid_nick'>nick</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_nick'>nick</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@warnings</span><span class='lbracket'>[</span><span class='id identifier rubyid_nick'>nick</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
     <span class='kw'>true</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Nick </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_nick'>nick</span><span class='rbrace'>}</span><span class='tstring_content'> has no warnings</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Nick </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_nick'>nick</span><span class='embexpr_end'>}</span><span class='tstring_content'> has no warnings</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
     <span class='kw'>false</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -623,7 +623,7 @@ Regex and then passed to the corrosponding Ruby method</p>
       <div class="method_details ">
   <h3 class="signature " id="kick_mode-instance_method">
   
-    - (<tt>Object</tt>) <strong>kick_mode</strong>(m, setting = 'status') 
+    - (<tt>Object</tt>) <strong>kick_mode</strong>(m, setting = &#39;status&#39;) 
   
 
   
@@ -632,7 +632,7 @@ Regex and then passed to the corrosponding Ruby method</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Set or query whether we're kicking people</p>
+<p>Set or query whether we&#39;re kicking people</p>
 
 
   </div>
@@ -643,7 +643,7 @@ Regex and then passed to the corrosponding Ruby method</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: kick (on|off|status)</pre>
+      <pre class="example code"><code>JustBot: kick (on|off|status)</code></pre>
     
   </div>
 
@@ -676,7 +676,7 @@ Regex and then passed to the corrosponding Ruby method</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/plugins/tumblrguard.rb', line 88</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_kick_mode'>kick_mode</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_setting'>setting</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>status</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_kick_mode'>kick_mode</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_setting'>setting</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>status</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Session</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_is_admin?'>is_admin?</span>
     <span class='kw'>case</span> <span class='id identifier rubyid_setting'>setting</span>
@@ -691,7 +691,7 @@ Regex and then passed to the corrosponding Ruby method</p>
       <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tumblr kicking is off</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>not authorized to make changes</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>not authorized to make changes</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -850,7 +850,7 @@ Regex and then passed to the corrosponding Ruby method</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">JustBot: kicked</pre>
+      <pre class="example code"><code>JustBot: kicked</code></pre>
     
   </div>
 
@@ -870,7 +870,7 @@ Regex and then passed to the corrosponding Ruby method</p>
       <pre class="code"><span class="info file"># File 'lib/plugins/tumblrguard.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show_kicked'>show_kicked</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>I've kicked </span><span class='embexpr_beg'>#{</span><span class='ivar'>@kicked</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rbrace'>}</span><span class='tstring_content'> users.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>I&#39;ve kicked </span><span class='embexpr_beg'>#{</span><span class='ivar'>@kicked</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'> users.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_reply'>reply</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Last kick: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@kicked</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@kicked</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -902,10 +902,10 @@ first time kicks them the second time ignores admin users</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code">TumblrLover&gt; man such a cool post I made on tumblr
+      <pre class="example code"><code>TumblrLover&gt; man such a cool post I made on tumblr
 JustBot&gt; TumblrLover: tumblr is scum. do not mention it again
-TumblrLover&gt; I love tumblr, and there's nothing you can do about it
-TumblrLover was kicked from #okcupid by JustBot [explanation]</pre>
+TumblrLover&gt; I love tumblr, and there&#39;s nothing you can do about it
+TumblrLover was kicked from #okcupid by JustBot [explanation]</code></pre>
     
   </div>
 
@@ -939,10 +939,10 @@ TumblrLover was kicked from #okcupid by JustBot [explanation]</pre>
 <span class='kw'>def</span> <span class='id identifier rubyid_tumblr_mentioned'>tumblr_mentioned</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Session</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span> <span class='op'>==</span> <span class='ivar'>@bot</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_is_admin?'>is_admin?</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Tumbler mentioned by </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='rbrace'>}</span><span class='tstring_content'>, but not acted on</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Tumbler mentioned by </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='embexpr_end'>}</span><span class='tstring_content'>, but not acted on</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>else</span>
     <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@warnings</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@should_kick</span>
-      <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trying to kick </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trying to kick </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
       <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_channel'>channel</span><span class='period'>.</span><span class='id identifier rubyid_kick'>kick</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='ivar'>@warnings</span><span class='lbracket'>[</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
       <span class='ivar'>@kicked</span> <span class='op'>&lt;&lt;</span> <span class='const'>KickedStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nick'>nick</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_channel'>channel</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
@@ -962,9 +962,9 @@ TumblrLover was kicked from #okcupid by JustBot [explanation]</pre>
 </div>
 
     <div id="footer">
-  Generated on Thu Jun 28 16:27:10 2012 by
+  Generated on Thu Aug  8 19:22:58 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.8.7 (ruby-2.0.0).
 </div>
 
   </body>
