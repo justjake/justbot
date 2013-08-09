@@ -5,6 +5,8 @@ copyright 2012, all rights reserved
 
 ## About
 
+*Online documentation*: http://rubydoc.info/github/justjake/justbot
+
 You can discover the plugins availible in Justbot by looking at {Justbot::Plugins}
 
 Here are a few of the better features:
