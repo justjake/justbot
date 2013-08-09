@@ -1,0 +1,6 @@
+#/usr/bin/env sh
+# Connect to IRC
+ssh -f -N -L 6667:irc.housing.berkeley.edu:6667 just.jake@irc.housing.berkeley.edu
+
+# start the bot
+ruby ~/src/justbot/bin/justbot

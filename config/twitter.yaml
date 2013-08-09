@@ -1,0 +1,11 @@
+# channels to notify
+channels:
+  - '#salty'
+  - '#jitl'
+  - '##'
+oauth:
+  :consumer_key:        
+  :consumer_secret:     
+  :oauth_token:         
+  :oauth_token_secret:  
+

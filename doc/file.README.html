@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.2.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>&quot;JustBot&quot; IRC Bot</h1>
+
+<p>by Jake Teton-Landis <a href="mailto:just.1.jake@gmail.com">just.1.jake@gmail.com</a>
+copyright 2012, all rights reserved</p>
+
+<h2>About</h2>
+
+<p>You can discover the plugins availible in Justbot by looking at <span class='object_link'><a href="Justbot/Plugins.html" title="Justbot::Plugins (module)">Justbot::Plugins</a></span></p>
+
+<p>Here are a few of the better features:</p>
+
+<ul>
+<li>  tweet right from irc by typing <code>!tweet &lt;update text&gt;</code></li>
+<li>  follow all your Rescomp freinds at once by typing <code>JustBot: twitter followall</code></li>
+<li>  bask in the warm glow of the social as JustBot prints tweets to ## in 3-color glory!</li>
+</ul>
+
+<p>This bot is build on the Cinch framework, a ruby library for building
+IRC bots which features a nicely threaded design. It allows you to build
+bot capabilities through plugins, so you can easily separate bot functionality.</p>
+
+<p>There are a few components that are not Cinch-dependent, such as the DataMapper users
+support, but they are ment to be used from Cinch plugins.</p>
+
+<h2>Requirements</h2>
+
+<h3>Core Requirements</h3>
+
+<p>In order of importance:</p>
+
+<ol>
+<li> Ruby 1.9.1 or better.</li>
+<li> <a href="https://github.com/cinchrb/cinch/">Cinch</a> framework (<code>gem install cinch</code>) is the core library for the bot.</li>
+<li>  Two (!) gems are used for interfacing with the Twitter APIs:
+
+<ol>
+<li> <strong><code>twitter</code></strong> is used for most Twitter API interaction</li>
+<li> <strong><code>twitter_oauth</code></strong> is used during user creation to get oauth tokens and twitter_id</li>
+</ol></li>
+<li>  Users support depends on <a href="http://datamapper.org/">DataMapper</a> for ORM, although only only &#39;dm-core&#39;, &#39;dm-migrations&#39; and
+&#39;dm-transactions&#39; are required at present. It&#39;ll try to connect to a sqlite database in
+<code>config</code> by default. Edit <code>lib/database.rb</code> to customize.</li>
+<li>  Tweets are run through <a href="http://htmlentities.rubyforge.org/">HTMLentities</a> before being displayed, so you&#39;ll
+need to have that gem installed, too</li>
+</ol>
+
+<h3>More Requirements</h3>
+
+<ul>
+<li>  <strong><span class='object_link'><a href="Justbot/Session.html" title="Justbot::Session (class)">Justbot::Session</a></span></strong>, <strong><span class='object_link'><a href="Justbot/User.html" title="Justbot::User (class)">Justbot::User</a></span></strong>: these modules have inline Rspec tests. Install &#39;<code>rspec</code>&#39; or
+remove the tests.</li>
+<li>  <strong><span class='object_link'><a href="Justbot/Plugins/SteamPowered.html" title="Justbot::Plugins::SteamPowered (class)">Justbot::Plugins::SteamPowered</a></span></strong>: requires &#39;<code>steam-condenser</code>&#39;, an apllingly poor gem for interacting
+with Valve Software&#39;s products.</li>
+<li>  <strong>This documentation</strong> is generated using <a href="http://yardoc.org/">YARD</a> but really if you like Ruby
+(or even use it at all) you should have <code>yard server --gems</code> running somewhere.</li>
+</ul>
+
+<h2>Bot Usage from IRC</h2>
+
+<p><code>/msg &lt;botname&gt; help</code> will give you an overview of the active plugins in a bot
+instance:</p>
+
+<pre class="code ruby"><code> &gt; help
+Help for JustBot
+plugins:
+Administration, Friendly, Help, Registration, Sessions, Tweet, TwitterFeed, Steam
+help in Help
+  help [PLUGIN] [COMMAND]
+  show help information for the bot, for PLUGIN in bot, or for a COMMAND in PLUGIN
+</code></pre>
+
+<p>You can then query to get help about specific plugins. Plugin help uses prefix-based matching,
+so &#39;<code>help admin</code>&#39; will show the help for the <code>Adimistration</code> plugin.</p>
+
+<p>The confusing thing is, commands are not called prefixed by module name. For example, if you wanted
+to get help about command <code>twitter follow</code> in module <code>TwitterFeed</code> you might type the following:</p>
+
+<pre class="code ruby"><code>&gt; JustBot: help twit twitter follow
+or
+&gt; /msg JustBot help twit twitter follow
+</code></pre>
+
+<p>but to actually request the command, you would type</p>
+
+<pre class="code ruby"><code>&gt; JustBot: twitter follow @justbotirc
+or
+&gt; /msg JustBot twitter follow @justbotirc
+</code></pre>
+
+<h2>Developments</h2>
+
+<h3><a href="https://bitbucket.org/justjake/justbot/issues">Issue Tracker</a></h3>
+
+<h3>Source Code Access</h3>
+
+<p>The bot is closed source for now, because there are secrets in the source
+codes. If you pester me enough I&#39;ll create a new repo where there&#39;s no history,
+and also no secrets in the past. But for now this is a side-side-project and has
+like zero real brain power in it.</p>
+
+<h2>To Run</h2>
+
+<pre class="code ruby"><code>$ cd /path/to/bot/
+$ ruby -v # should be &gt;= 1.9.1
+$ ruby bin/justbot
+</code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Thu Jun 28 16:27:09 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
