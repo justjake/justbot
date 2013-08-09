@@ -1,4 +1,4 @@
-# JustBot Development
+# Justbot Development
 
 1. Fork on Github
 2. `git checkout -b my-feature`
@@ -8,7 +8,7 @@
 
 ## Generated Documentation
 
-*Online documentation for JustBot*:
+*Online documentation for Justbot*:
 http://rubydoc.info/github/justjake/justbot/frames
 
 *Documentation for [Cinch][c]*:
@@ -73,15 +73,15 @@ These are in order of importance.
 
 ## Creating a plugin
 
-Creating a JustBot plugin is almost identical to the system for creating
+Creating a Justbot plugin is almost identical to the system for creating
 Cinch plugins. There are just a couple of extra steps:
 
-1. All plugins go in {JustBot::Plugins}, as files inside of
+1. All plugins go in {Justbot::Plugins}, as files inside of
    `lib/plugins`. 
 
 2. Plugins include both Cinch::Plugin (this gives you all the
    handy-dandy Cinch plugin definition methods) AND {Justbot::Helpful},
-   which adds support for the JustBot help system.
+   which adds support for the Justbot help system.
 
 3. You should add your plugin to the list of all plugins,
    {Justbot::Plugins::All} at the end of your class definition.
@@ -92,7 +92,7 @@ Here's the bare minimum plugin definition:
 
 ```ruby
 
-    module JustBot
+    module Justbot
       module Plugins
       
         # Cool new plugin
