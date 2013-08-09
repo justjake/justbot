@@ -89,22 +89,25 @@ Cinch plugins. There are just a couple of extra steps:
    modify the bot's executable file.
 
 Here's the bare minimum plugin definition:
+
 ```ruby
-module JustBot
-  module Plugins
-  
-    # Cool new plugin
-    class MyNewPlugin
-      include Cinch::Plugin
-      include Justbot::Helpful
-                
-      # ... cinch plugin definition ...
+
+    module JustBot
+      module Plugins
+      
+        # Cool new plugin
+        class MyNewPlugin
+          include Cinch::Plugin
+          include Justbot::Helpful
+                    
+          # ... cinch plugin definition ...
+        end
+
+        # add my plugin to the list of all plugins
+        All << MyNewPlugin
+        
+      end
     end
 
-    # add my plugin to the list of all plugins
-    All << MyNewPlugin
-    
-  end
-end
 ```
 

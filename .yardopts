@@ -1,5 +1,8 @@
 --exclude doc
+--exclude bootstrap.rb
+--exclude bin
 lib
+bin/justbot
+-
 README.md
 DEVELOPERS.md
-bin/justbot
