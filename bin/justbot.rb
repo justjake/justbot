@@ -1,19 +1,23 @@
 #!/usr/bin/env ruby
 require "rubygems"
-# require "bundler/setup"
+require "bundler/setup"
 require "cinch"
 
-$LOAD_PATH << File.join(File.dirname(File.dirname(__FILE__)), 'lib')
-require "base"
+$LOAD_PATH << File.join(
+    File.dirname(
+        File.dirname(
+            File.absolute_path(__FILE__))), 'lib')
+
+require "justbot"
 
 # Persistent user stuff
-require "crypto"
-require "database"
-require "user"
+require "justbot/crypto"
+require "justbot/database"
+require "justbot/user"
 DataMapper.finalize
 
 # plugins
-require "plugins"
+require "justbot/plugins"
 
 # the bot is configured for localhost,
 # expecting you to either be on your IRC server,
@@ -21,17 +25,17 @@ require "plugins"
 # on your own
 bot = Cinch::Bot.new do
   configure do |c|
-    c.nick = "OpsBot"
+    c.nick = "justbot^testing"
     c.user = 'justbot'
     c.server = "localhost"
-    c.realname = "Derps about the server"
+    c.realname = "Only a Bot"
 
     # Add more channels here
-    c.channels = ["#justjake", '##']
+    c.channels = ["#jitl", "##", "#satly"]
 
     # plugins.plugins contains functionality
     # c.plugins.plugins = [Justbot::IRC::TumblrGuard, JITL::IRC::Friendly, JITL::IRC::Admin]
-    c.plugins.plugins = [Justbot::Plugins::Admin, Justbot::Plugins::SessionManager]
+    c.plugins.plugins = Justbot::Plugins::All
 
     # Bot always addressable by its nick, or accepts commands directly via PM
     c.plugins.prefix = Justbot::Prefix
@@ -41,4 +45,3 @@ bot = Cinch::Bot.new do
 end
 
 bot.start
-

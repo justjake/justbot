@@ -58,4 +58,4 @@ module Justbot
   end
 end
 
-require 'helpful'
+require 'justbot/helpful'

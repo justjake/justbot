@@ -1,7 +1,6 @@
-syntax: glob
-
 .idea
 .yardoc
 *.sqlite
 *.db
 *.iml
+twitter.yaml

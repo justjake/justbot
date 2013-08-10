@@ -10,9 +10,9 @@ $LOAD_PATH << File.join(File.dirname(File.dirname(__FILE__)), 'lib')
 require "base"
 
 # Persistent user stuff
-require "crypto"
-require "database"
-require "user"
+require "justbot/crypto"
+require "justbot/database"
+require "justbot/user"
 DataMapper.finalize
 
 # plugins

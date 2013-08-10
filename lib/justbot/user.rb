@@ -1,4 +1,4 @@
-require 'session'
+require 'justbot/session'
 module Justbot
   # Database-backed user structure that handles low-level authentication and sessions
   class User

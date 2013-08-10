@@ -22,4 +22,4 @@ gem "dm-transactions", "~> 1.2.0"
 gem "dm-sqlite-adapter"
 gem "sqlite3"
 
-# gem "steam-condenser" # as much as I regret it
+gem "steam-condenser" # as much as I regret it
