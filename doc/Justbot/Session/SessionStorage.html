@@ -94,7 +94,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/session.rb</dd>
+    <dd class="r2 last">lib/justbot/session.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -260,7 +260,7 @@
 27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/session.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/session.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@storage</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -324,7 +324,7 @@ storage method if they require users to be authenticated.</p>
 36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/session.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/session.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='ivar'>@storage</span><span class='lbracket'>[</span><span class='id identifier rubyid_access_symbol'>access_symbol</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rbracket'>]</span>
@@ -372,7 +372,7 @@ storage method if they require users to be authenticated.</p>
 42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/session.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/session.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@storage</span><span class='lbracket'>[</span><span class='id identifier rubyid_access_symbol'>access_symbol</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
@@ -413,7 +413,7 @@ storage method if they require users to be authenticated.</p>
 47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/session.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/session.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_all'>all</span>
   <span class='ivar'>@storage</span>
@@ -428,7 +428,7 @@ storage method if they require users to be authenticated.</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Aug  8 19:36:13 2013 by
+  Generated on Fri Aug  9 18:39:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7 (ruby-2.0.0).
 </div>

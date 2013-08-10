@@ -98,7 +98,7 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/user.rb</dd>
+    <dd class="r1 last">lib/justbot/user.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -256,7 +256,7 @@ sessions</p>
 26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/user.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/user.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authenticates?'>authenticates?</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>==</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='id identifier rubyid_digest'>digest</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
@@ -310,7 +310,7 @@ sessions</p>
 46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/user.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/user.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_is_admin?'>is_admin?</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_is_admin'>is_admin</span> <span class='op'>||</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_is_owner'>is_owner</span>
@@ -361,7 +361,7 @@ sessions</p>
 41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/user.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/user.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_twitter_token'>twitter_token</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='const'>Justbot</span><span class='op'>::</span><span class='const'>Crypto</span><span class='period'>.</span><span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span>
@@ -386,7 +386,7 @@ sessions</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Aug  8 19:36:13 2013 by
+  Generated on Fri Aug  9 18:39:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7 (ruby-2.0.0).
 </div>

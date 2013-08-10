@@ -79,7 +79,7 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/crypto.rb</dd>
+    <dd class="r1 last">lib/justbot/crypto.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -301,7 +301,7 @@
 44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/crypto.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/crypto.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_crypt'>crypt</span><span class='lparen'>(</span><span class='id identifier rubyid_cleartext'>cleartext</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cipher'>cipher</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>Cipher</span><span class='op'>::</span><span class='const'>AES256</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:CBC</span><span class='rparen'>)</span>
@@ -433,7 +433,7 @@ a Crypted struct</p>
 65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/crypto.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/crypto.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_ciphertext'>ciphertext</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='id identifier rubyid_iv'>iv</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='comment'># unwrap ciphertext struct
@@ -523,7 +523,7 @@ a Crypted struct</p>
 24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/crypto.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/crypto.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_digest'>digest</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span>
   <span class='const'>Base64</span><span class='period'>.</span><span class='id identifier rubyid_encode64'>encode64</span><span class='lparen'>(</span><span class='const'>Digest</span><span class='op'>::</span><span class='const'>SHA512</span><span class='period'>.</span><span class='id identifier rubyid_digest'>digest</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>+</span> <span class='const'>SALT</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -597,7 +597,7 @@ a Crypted struct</p>
 31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/crypto.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot/crypto.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
   <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKCS5</span><span class='period'>.</span><span class='id identifier rubyid_pbkdf2_hmac_sha1'>pbkdf2_hmac_sha1</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='const'>SALT</span><span class='comma'>,</span> <span class='int'>3000</span><span class='comma'>,</span> <span class='int'>256</span><span class='rparen'>)</span>
@@ -612,7 +612,7 @@ a Crypted struct</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Aug  8 19:36:13 2013 by
+  Generated on Fri Aug  9 18:39:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7 (ruby-2.0.0).
 </div>

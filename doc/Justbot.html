@@ -79,8 +79,8 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/base.rb<span class="defines">,<br />
-  lib/user.rb,<br /> lib/crypto.rb,<br /> lib/session.rb,<br /> lib/helpful.rb,<br /> lib/database.rb,<br /> lib/plugins/help.rb,<br /> lib/plugins/steam.rb,<br /> lib/plugins/tweet.rb,<br /> lib/plugins/admin.rb,<br /> lib/plugins/friendly.rb,<br /> lib/plugins/tumblrguard.rb,<br /> lib/plugins/session_manager.rb,<br /> lib/plugins/twitter_watcher.rb,<br /> lib/plugins/registration_manager.rb</span>
+    <dd class="r1 last">lib/justbot.rb<span class="defines">,<br />
+  lib/justbot/user.rb,<br /> lib/justbot/crypto.rb,<br /> lib/justbot/session.rb,<br /> lib/justbot/helpful.rb,<br /> lib/justbot/database.rb,<br /> lib/justbot/plugins/help.rb,<br /> lib/justbot/plugins/admin.rb,<br /> lib/justbot/plugins/steam.rb,<br /> lib/justbot/plugins/tweet.rb,<br /> lib/justbot/plugins/friendly.rb,<br /> lib/justbot/plugins/tumblrguard.rb,<br /> lib/justbot/plugins/session_manager.rb,<br /> lib/justbot/plugins/twitter_watcher.rb,<br /> lib/justbot/plugins/registration_manager.rb</span>
 </dd>
   
 </dl>
@@ -338,7 +338,7 @@ user is not PMing the bot</p>
 42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/base.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_notify_private_reply'>notify_private_reply</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_message_type'>message_type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>your interaction</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_channel?'>channel?</span>
@@ -478,7 +478,7 @@ user is not PMing the bot</p>
 32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/base.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/justbot.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reply_in_pm'>reply_in_pm</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='comma'>,</span> <span class='id identifier rubyid_reply_lines'>reply_lines</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -496,7 +496,7 @@ user is not PMing the bot</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Aug  8 19:36:13 2013 by
+  Generated on Fri Aug  9 18:39:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7 (ruby-2.0.0).
 </div>
