@@ -1,49 +1,146 @@
+require 'set'
 require 'justbot/session'
 module Justbot
-  # Database-backed user structure that handles low-level authentication and sessions
-  class User
-    include DataMapper::Resource
-    property :id,                     Serial
-    property :name,                   String, required: true
-    property :password,               String, required: true, length: 90
+  # Database-persistent data in Justbot.
+  # Models are mapped into our SQlite database using DataMapper.
+  module Models
 
-    # Roles
-    property :is_admin,               Boolean, required: true, default: false
-    property :is_owner,               Boolean, required: true, default: false
+    # A user. Contains a hashed password and permission authentications
+    class User
+      include DataMapper::Resource
+      property :id,                     Serial
+      property :name,                   String, required: true
+      property :password,               String, required: true, length: 90
+      # simple string tags. useful for permissions
+      has n, :tags, 'PersistentTag'
 
-    # Twitter
-    property :twitter_id,             Integer
-    # encrypted properties
-    property :crypted_twitter_token,  String, length: 120
-    property :crypted_twitter_secret, String, length: 120
-    # ecrypted property IVs
-    property :iv_twitter_token,       String, length: 25
-    property :iv_twitter_secret,      String, length: 25
+      # test to see if the given password would authenticate the user
+      # @param password [String]
+      def authenticates?(password)
+        self.password == Crypto::digest(password)
+      end
 
-    # test to see if the given password would authenticate the user
-    def authenticates?(password)
-      self.password == Crypto::digest(password)
+      # Query if this user has a tag of the given type
+      # @param tag [Tag]
+      # @return [Boolean]
+      def has_tag?(tag)
+        self.tags.count(:name => tag.name) > 0
+      end
+
+      # Tag this User with a tag of a given type
+      # @param tag [Tag]
+      def add_tag(tag)
+        self.tags.new(:name => tag.name)
+      end
+
+      # Remove any tags of the given type from this user
+      # @param tag [Tag]
+      def remove_tag(tag)
+        self.tags.all(:name => tag.name).destroy
+      end
+
+      # Should this user be considered a superuser in any plugin?
+      # @see Justbot::Models::Tag::AdminTag
+      def is_admin?
+        self.has_tag? Justbot::Models::Tag::AdminTag
+      end
     end
 
-    # decrypt the twitter token and secret in this user and return them
-    def twitter_token(password)
-      token = Justbot::Crypto.decrypt(
-          self.crypted_twitter_token,
-          password,
-          self.iv_twitter_token
+    # Simple model to tag users with string attributes
+    # Can be used to implement permissions in plugins, etc
+    class PersistentTag
+      include DataMapper::Resource
+      property   :name, String
+      belongs_to :user, :key => true
+    end
+    private_constant :PersistentTag
+
+
+    # Simple model to tag users with string attributes
+    # Can be used to implement permissions in plugins, etc
+    # You can manage the tags attatched to a {Justbot::Models::User} with
+    # {Justbot::Models::User#add_tag}, {Justbot::Models::User#remove_tag},
+    # and {Justbot::Models::User#has_tag?}
+    #
+    # @see {Justbot::Helpful::ClassMethods#define_tag}
+    #
+    # @example Usage in a plugin
+    #   # could also be Justbot::Models::Tag.new
+    #   QuizJudge = define_tag "user is a quiz judge"
+    #
+    #   def make_quiz_judge(m, nick)
+    #     s = Session(m)
+    #     if s && s.user.has_tag? @@quiz_judge
+    #       other_user = Justbot::Models::User.first(:name => nick)
+    #       if not other_user
+    #         m.reply("no user by name '#{nick}' found")
+    #         return
+    #       end
+    #
+    #       other_user.add_tag(@@quiz_judge)
+    #       m.reply("User '#{nick} is now a quiz judge")
+    #       return
+    #     end
+    #     # not a quiz judge, so no permission to execute command
+    #     m.reply("No permission to make someone a judge")
+    #   end
+    class Tag
+
+      # Tag user as an administrator, who should be able to do anything
+      # in any plugin
+      AdminTag = Tag.new("user is an administrator")
+
+      # list of all query methods that can have a 'name' associated with them
+      NAME_METHODS = Set.new(
+        :first,
+        :last,
+        :get,
+        :new
       )
-      secret = Justbot::Crypto.decrypt(
-          self.crypted_twitter_secret,
-          password,
-          self.iv_twitter_secret
-      )
-      {:token => token, :secret => secret}
+      private_constant :NAME_METHODS
+
+      # rememeber what tag types have been created, to prevent two plugin 
+      # authors from accidentally using conflicting tag names
+      @@already_created_types = Set.new
+
+      attr_reader :name
+
+      # Define a new tag type of the given name.
+      # Tag names must be unique across the program so that plugin 
+      # functionality doesn't conflict.
+      #
+      # @see {Justbot::Models::Tag}
+      #
+      # @param tag_name [String] description of the tag's use
+      # @return [Justbot::Models::Tag]
+      def initialize(tag_name)
+        if @@already_created_types.include? tag_name
+          # throw some sort of error
+        end
+
+        @name = tag_name.freeze
+        @@already_created_types.add(tag_name)
+      end
+
+
+      # Pass calls through to {Justbot::Models::PersistentTag} with the name
+      # parameter always bound to @name
+      def method_missing(m, *args, &block)
+        if :m == :new and args.length == 0
+          # create new tags with the fixed tag type
+          args[0] = Hash.new
+        end
+        if NAME_METHODS.include? m and args[0].is_a Hash
+          # set :name in the kwargs to @tag_name
+          # so the user precieves a Tag DataMapper class that always
+          # selects with this tag's type
+          args[0][:name] = @name
+        end
+
+        PersistentTag.public_send(m, *args, &block)
+      end
+
     end
 
-    # is this user an admin?
-    def is_admin?
-      self.is_admin || self.is_owner
-    end
   end
 end
-
