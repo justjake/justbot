@@ -44,7 +44,7 @@ In order of importance:
 
 ### More Requirements
 
-*   **{Justbot::Session}**, **{Justbot::User}**: these modules have inline Rspec tests. Install '`rspec`' or
+*   **{Justbot::Session}**, **{Justbot::Models::User}**: these modules have inline Rspec tests. Install '`rspec`' or
     remove the tests.
 *   **{Justbot::Plugins::SteamPowered}**: requires '`steam-condenser`', an apllingly poor gem for interacting
     with Valve Software's products.

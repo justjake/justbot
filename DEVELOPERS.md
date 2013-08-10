@@ -54,24 +54,9 @@ See `bin/justbot` for the primary example of a bot using this project.
 Read the [Cinch getting started documentation][cgs] to get a feel for how
 Justbot's IRC system works.
 
-### Architecture TODOs
+## Adding Featuers
 
-These are in order of importance.
-
-1. Create {Justbot::Models} to store our DataMapper models, in a
-   directory like `models`. Relocate {Justbot::User}.
-
-1. Define or import a flexible authorization model. Right now we just
-   confirm if a user is an administrator ({Justbot::User#is_admin?}). We
-   need permission authrizations that plugins can define.
-
-   This should be called {Justbot::Authorization}.
-
-1. Reorganize the directory structure to group all code under
-   `lib/justbot` instead of everything just lying around un-prefixed in
-   `lib` so we can think about becoming a Rubygem someday or something.
-
-## Creating a plugin
+### Creating a Plugin
 
 Creating a Justbot plugin is almost identical to the system for creating
 Cinch plugins. There are just a couple of extra steps:
@@ -88,6 +73,7 @@ Cinch plugins. There are just a couple of extra steps:
    This allows bots to include all plugins at once without having to
    modify the bot's executable file.
 
+
 Here's the bare minimum plugin definition:
 
 ```ruby
@@ -99,7 +85,7 @@ Here's the bare minimum plugin definition:
         class MyNewPlugin
           include Cinch::Plugin
           include Justbot::Helpful
-                    
+
           # ... cinch plugin definition ...
         end
 
@@ -111,3 +97,37 @@ Here's the bare minimum plugin definition:
 
 ```
 
+Use {Justbot::Models::Tag} to add permissions and capability identifiers
+to your plugin's registered users.
+
+See {file:lib/justbot/plugins/tweet.rb the tweeting plugin} for a simple
+example from the codebase.
+
+### Models
+
+If your plugin needs to persist additional information into the database,
+please define your models in `lib/justbot/models/your_plugin.rb`, then
+require that file from your plugin. You may add a relationship between
+the models your plugin introduces and {Justbot::Models::User} by
+re-opening the User class:
+
+```ruby
+
+    module Justbot
+      module Models
+        # define your new model as belonging to User
+        class MyGreatModel
+          belongs_to :user, key: true
+        end
+
+        # re-open user to add ownership of MyGreatModel
+        class User
+          has 1, :greatmodel, 'MyGreatModel'
+        end
+      end
+    end
+
+```
+
+See {file:lib/justbot/models/twitter.rb the Twitter model} for an
+example of this in practice.

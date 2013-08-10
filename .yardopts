@@ -6,3 +6,5 @@ bin/justbot
 -
 README.md
 DEVELOPERS.md
+lib/justbot/models/twitter.rb
+lib/justbot/plugins/tweet.rb
