@@ -8,16 +8,14 @@ $LOAD_PATH << File.join(
         File.dirname(
             File.absolute_path(__FILE__))), 'lib')
 
+# base library - required for plugins
 require "justbot"
-
-# Persistent user stuff
-require "justbot/crypto"
-require "justbot/database"
-require "justbot/user"
-DataMapper.finalize
-
-# plugins
-require "justbot/plugins"
+# plugins that are advised for all bots
+# TODO decide if we should put these basic plugin includes in library root
+require "justbot/plugins"                   # register, help, admin
+require "justbot/plugins/friendly"          # say hi
+require "justbot/plugins/tweet"             # !tweet in channel to tweet
+require "justbot/plugins/twitter_watcher"   # print twitter feed
 
 # the bot is configured for localhost,
 # expecting you to either be on your IRC server,

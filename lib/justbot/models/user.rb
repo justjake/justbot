@@ -1,5 +1,4 @@
 require 'set'
-require 'justbot/session'
 module Justbot
   # Database-persistent data in Justbot.
   # Models are mapped into our SQlite database using DataMapper.
@@ -86,17 +85,13 @@ module Justbot
     #   end
     class Tag
 
-      # Tag user as an administrator, who should be able to do anything
-      # in any plugin
-      AdminTag = Tag.new("user is an administrator")
-
       # list of all query methods that can have a 'name' associated with them
-      NAME_METHODS = Set.new(
+      NAME_METHODS = Set.new([
         :first,
         :last,
         :get,
         :new
-      )
+      ])
       private_constant :NAME_METHODS
 
       # rememeber what tag types have been created, to prevent two plugin 
@@ -140,7 +135,10 @@ module Justbot
         PersistentTag.public_send(m, *args, &block)
       end
 
-    end
+      # Tag user as an administrator, who should be able to do anything
+      # in any plugin
+      AdminTag = Tag.new("user is an administrator")
 
+    end
   end
 end
