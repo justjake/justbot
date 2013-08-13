@@ -23,7 +23,7 @@ end
 
 require "justbot/plugins/admin"
 require "justbot/plugins/help"
-require "justbot/plugins/registration_manager"
+require "justbot/plugins/register_user"
 require "justbot/plugins/session_manager"
 
 # require "justbot/plugins/friendly"
