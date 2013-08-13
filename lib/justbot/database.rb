@@ -2,6 +2,7 @@
 require 'dm-core'
 require 'dm-migrations'
 require 'dm-transactions'
+require 'dm-aggregates'
 module Justbot
   # path to the users sqlite database
   DATABASE_PATH = File.join(CONFIG_ROOT, 'database.sqlite')

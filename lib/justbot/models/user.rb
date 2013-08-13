@@ -23,13 +23,20 @@ module Justbot
       # @param tag [Tag]
       # @return [Boolean]
       def has_tag?(tag)
-        self.tags.count(:name => tag.name) > 0
+        self.tags.count(:name => tag.name)> 0
       end
 
       # Tag this User with a tag of a given type
       # @param tag [Tag]
       def add_tag(tag)
         self.tags.new(:name => tag.name)
+      end
+
+      # Tag this User with a tag of a given type and immediatly save this tag add
+      # @param tag [Tag]
+      def add_tag!(tag)
+        tag = add_tag(tag)
+        tag.save
       end
 
       # Remove any tags of the given type from this user
@@ -45,14 +52,19 @@ module Justbot
       end
     end
 
+
     # Simple model to tag users with string attributes
     # Can be used to implement permissions in plugins, etc
+    # @private
     class PersistentTag
+
+      # how long a tag description string can be
+      MaxLength = 100
+
       include DataMapper::Resource
-      property   :name, String
+      property   :name, String, length: MaxLength, required: true
       belongs_to :user, :key => true
     end
-    private_constant :PersistentTag
 
 
     # Simple model to tag users with string attributes
@@ -90,6 +102,7 @@ module Justbot
         :first,
         :last,
         :get,
+        :count,
         :new
       ])
       private_constant :NAME_METHODS
@@ -109,12 +122,18 @@ module Justbot
       # @param tag_name [String] description of the tag's use
       # @return [Justbot::Models::Tag]
       def initialize(tag_name)
+        # cannot create tags that will break the DB
+        if tag_name.length > PersistentTag::MaxLength
+          raise NameError.new("Tag name `#{tag_name}' over max length of #{PersistentTag::MaxLength}.")
+        end
+
+        # cannot re-create tag types
         if @@already_created_types.include? tag_name
-          # throw some sort of error
+          raise NameError.new("Tag name `#{tag_name}' already defined.")
         end
 
         @name = tag_name.freeze
-        @@already_created_types.add(tag_name)
+        @@already_created_types.add(@name)
       end
 
 
@@ -125,7 +144,9 @@ module Justbot
           # create new tags with the fixed tag type
           args[0] = Hash.new
         end
-        if NAME_METHODS.include? m and args[0].is_a Hash
+        if NAME_METHODS.include? m 
+          # always a hash. converts nil to a hash too
+          args[0] = args[0].to_h
           # set :name in the kwargs to @tag_name
           # so the user precieves a Tag DataMapper class that always
           # selects with this tag's type

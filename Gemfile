@@ -19,6 +19,7 @@ gem "rb-readline"
 gem "dm-migrations", "~> 1.2.0"
 gem "dm-core", "~> 1.2.0"
 gem "dm-transactions", "~> 1.2.0"
+gem "dm-aggregates", "~> 1.2.0"
 gem "dm-sqlite-adapter"
 gem "sqlite3"
 
