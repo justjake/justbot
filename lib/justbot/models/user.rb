@@ -8,7 +8,7 @@ module Justbot
     class User
       include DataMapper::Resource
       property :id,                     Serial
-      property :name,                   String, required: true
+      property :name,                   String, required: true, unique: true
       property :password,               String, required: true, length: 90
       # simple string tags. useful for permissions
       has n, :tags, 'PersistentTag'
