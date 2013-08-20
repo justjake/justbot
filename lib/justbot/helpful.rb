@@ -84,7 +84,7 @@ module Justbot
 
       # (see Justbot::Models::Tag#initialize)
       def define_tag(tag_name)
-        Justbot::Models::TagType.new(tag_name)
+        Justbot::Models::Tag.new(tag_name)
       end
     end
 
