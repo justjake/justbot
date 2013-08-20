@@ -4,6 +4,7 @@ module Justbot
     # stores encrypted twitter oauth tokens
     # owned by a {Justbot::Models::User}
     class TwitterToken
+      include DataMapper::Resource
       belongs_to :user, :key => true
 
       # Twitter-user ID
@@ -29,7 +30,7 @@ module Justbot
           password,
           self.iv_twitter_secret
         )
-        {:token => token, :secret => secret}
+        return {:token => token, :secret => secret}
       end
     end
 
