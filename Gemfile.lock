@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     addressable (2.2.8)
     cinch (2.0.2)
@@ -72,6 +72,7 @@ DEPENDENCIES
   dm-sqlite-adapter
   dm-transactions (~> 1.2.0)
   htmlentities
+  multi_json
   pry
   rb-readline
   rspec

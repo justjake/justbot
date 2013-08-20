@@ -18,6 +18,7 @@ require "justbot/plugins"                   # register, help, admin
 
 # special stuff
 require "justbot/models/twitter"
+require "justbot/plugins/saltybet"
 
 # conclude Justbot DB setup
 Justbot::Database.connect(File.join(Justbot::CONFIG_ROOT, 'dev_db.sqlite'))
@@ -66,7 +67,7 @@ mngr = BotManager.new do |c|
   c.realname = "Only a Bot"
 
   # Add more channels here
-  c.channels = ["#jitl", "##", "#satly"]
+  c.channels = ["#jitl", "##", "#salty"]
 
   # plugins.plugins contains functionality
   # c.plugins.plugins = [Justbot::IRC::TumblrGuard, JITL::IRC::Friendly, JITL::IRC::Admin]

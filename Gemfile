@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 # IRC
 gem "cinch", "~> 2.0"
@@ -7,6 +7,7 @@ gem "cinch", "~> 2.0"
 gem "twitter"
 gem "twitter_oauth"
 gem "htmlentities"
+gem "multi_json"
 
 # test?!?!?
 gem "rspec"
