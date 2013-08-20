@@ -1,13 +1,10 @@
 require 'rspec'
 module Justbot
-  # per-session data
+  # a user's session. Can store per-plugin data using {Session#storage}
   class Session
-    # @param [Justbot::User] user create session for this user
+    # session duration time: 24 hours
+    DURATION = (24 * 60 * 60)
 
-    # session duration time: 3 hours
-    DURATION = (3 * 60 * 60)
-    # the character space from which we build confirmation secrets
-    SECRET_SELECT_SPACE = [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
     # container of all active sessions
     @sessions = {}
 
@@ -42,6 +39,7 @@ module Justbot
       end
 
       # return all plugin data for this session
+      # @return [Hash{Symbol => Any}]
       def all
         @storage
       end
@@ -63,49 +61,45 @@ module Justbot
       end
     end
 
-    # generate a random confirmation secret
-    def self.random_secret(length = 7)
-      (0..length).map{ SECRET_SELECT_SPACE[rand(SECRET_SELECT_SPACE.length)]}.join
-    end
 
     # find a session for the given mask
     # @param [Cinch::Message, Cinch::User, String] m a mask, or a Cinch user-like class
+    # @return [Session, nil] session for that mask, or nil if there's no session for that mask.
     def self.for(m)
       m = m.user.mask if m.is_a? Cinch::Message
       m = m.mask if m.is_a? Cinch::User
       @sessions[m.to_s]
     end
 
-    # @!visibility private
     # move a session from one mask to another
     def self.migrate(old_mask, new_mask)
       @sessions[new_mask] = @sessions.delete(old_mask)
     end
 
     # return the hash of all sessions
+    # @return [Hash{String => Session}]
     def self.all
       @sessions
     end
 
+    ###### instance methods
+
     # create a new session
-    def initialize(user, mask, confirmation_secret = nil)
+    # @param user [Justbot::Models::User] attatch this user to the session
+    # @param mask [String, Cinch::Mask] the IRC mask of the user
+    def initialize(user, mask)
       mask = mask.to_s
       @user = user
       @mask = mask.to_s
       @storage = SessionStorage.new
 
       @expiration = nil
-      if confirmation_secret.nil?
-        @confirmed = true
-      else
-        @secret = confirmation_secret
-        @confirmed = false
-      end
+
       # put this into the global sessions map
       self.class.all[mask] = self
-      # chain?
-      self
     end
+
+
 
     # the user for the session. useful for {Justbot::User#is_admin?}
     attr_reader   :user
@@ -119,6 +113,8 @@ module Justbot
     # when the session expires.
     attr_reader   :expiration
 
+
+
     # start the session by setting its expiration
     def start
       @expiration = Time.now + DURATION
@@ -127,21 +123,8 @@ module Justbot
     # is this session currently active?
     # used to determine if the session is valid in time
     def active?
-      (! @expiration.nil?) &&
+      (not @expiration.nil?) and
           Time.now < @expiration
-    end
-
-    # confirms auth for this session from a two-factor secret
-    def confirm_auth(confirm_key)
-      if @secret.nil?
-        raise SessionConfirmationError.new "session has no secret"
-      end
-
-      if confirm_key == @secret
-        @authed = true
-      else
-        raise SessionConfirmationError.new "wrong secret"
-      end
     end
 
     # can this session issue commands as @user?
@@ -162,9 +145,6 @@ module Justbot
     def stop!
       self.class.all.delete(self.mask)
     end
-
-    alias_method :destroy!, :stop!
-
   end
 
   # tests!
@@ -197,32 +177,6 @@ module Justbot
         Session::DURATION = old_duration
         sleep 20
         s.active?.should eq(false)
-      end
-    end
-
-    describe "#authed?" do
-      it "returns false when a session hasn't' been started" do
-        s = Session.new('value', 'testing mask')
-        s.authed?.should be_false
-      end
-
-      it "returns true when a session has been started, and that session didn't have a secret" do
-        s = Session.new('value', 'testing mask')
-        s.start
-        s.authed?.should be_true
-      end
-
-      it "returns false when a session was created with a key, but not confirmed" do
-        s = Session.new('value', 'testing mask', 'a secret')
-        s.start
-        s.authed?.should be_false
-      end
-
-      it "returns true when a session created with a key is running and was confirmed" do
-        s = Session.new('value', 'testing mask', 'a secret')
-        s.start
-        s.confirm_auth('a secret')
-        s.authed?.should be_true
       end
     end
 
@@ -264,6 +218,5 @@ module Justbot
       end
     end
 
-    #@todo describe #confirm_auth(secret)
   end
 end
