@@ -1,0 +1,3 @@
+[submodule "submodules/salty"]
+	path = submodules/salty
+	url = github:justjake/salty.rb
