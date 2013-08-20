@@ -21,8 +21,8 @@ module Justbot
       # provide basic help, and list modules
       # @param [Cinch::Message] m help request message
       def help(m)
-        Justbot.notify_private_reply(m, "help messages")
-        Justbot.reply_in_pm(m) { |r|
+        notify_private_reply(m, "help messages")
+        reply_in_pm(m) { |r|
           r << "Help for " + Format(:bold, Format(:blue, @bot.nick))
           r << "plugins: "
           r << bot_plugins.map{|p|  p.plugin_name }.join(', ')
@@ -62,28 +62,33 @@ module Justbot
       # print help information for the given plugin command in plugin_name
       def help_plugin_command(m, plugin_name, command_name)
         plugin = bot_plugin_for_name(plugin_name)
-        if plugin.is_a? Class
-          begin
-            command = plugin_command_for_name(plugin, command_name)
-            if command.nil?
-              no_help(m, plugin_name, command_name)
-            else
-              # print help
-              Justbot.reply_in_pm(m) { |reply|
-                reply << "%s in %s" %
-                    [
-                      Format(:bold, command.name),
-                      plugin.plugin_name
-                    ].map{|n| Format(:blue, n)}
-                reply << SPACER + command.signature
-                reply << SPACER + command.description
-              }
-            end
-          rescue NoMethodError
-            no_help(m, plugin_name)
-          end
-        else
+
+        # fail fast - plugin class not fouind
+        if not plugin.is_a? Class
           not_found(m, plugin_name)
+          return
+        end
+
+        begin
+          command = plugin_command_for_name(plugin, command_name)
+
+          if command.nil?
+            no_help(m, plugin_name, command_name)
+            return
+          end
+
+          # print help
+          reply_in_pm(m) do |reply|
+            reply << "%s in %s" %
+                [
+                  Format(:bold, command.name),
+                  plugin.plugin_name
+                ].map{|n| Format(:blue, n)}
+            reply << SPACER + command.signature
+            reply << SPACER + command.description
+          end
+        rescue NoMethodError
+          no_help(m, plugin_name)
         end
       end
 
